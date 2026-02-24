@@ -11,7 +11,6 @@ CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 async def send():
     with open("reminders.json") as f:
         reminders = json.load(f)
-    
     IST = pytz.timezone("Asia/Kolkata")
     today = datetime.now(IST).date().isoformat()
     if today in reminders:
