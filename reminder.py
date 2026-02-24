@@ -12,8 +12,8 @@ async def send():
     with open("reminders.json") as f:
         reminders = json.load(f)
     
-IST = pytz.timezone("Asia/Kolkata")
-   today = datetime.now(IST).date().isoformat() # format: "2026-03-01"
+    IST = pytz.timezone("Asia/Kolkata")
+    today = datetime.now(IST).date().isoformat()
     if today in reminders:
         bot = Bot(token=TOKEN)
         await bot.send_message(chat_id=CHAT_ID, text=reminders[today])
