@@ -9,7 +9,7 @@ TOKEN = os.environ["TELEGRAM_TOKEN"]
 CHAT_IDS = os.environ["TELEGRAM_CHAT_IDS"].split(",")
 
 async def send():
-    with open("reminders.json") as f:
+    with open("reminders.json", encoding="utf-8") as f:
         reminders = json.load(f)
 
     IST = pytz.timezone("Asia/Kolkata")
