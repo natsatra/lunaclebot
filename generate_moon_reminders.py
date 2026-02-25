@@ -4,6 +4,7 @@ import ephem
 from google import genai
 from datetime import datetime
 import gspread
+import time
 from google.oauth2.service_account import Credentials
 
 # Load credentials
@@ -86,6 +87,7 @@ for date_str, phase_name, month in phases:
     print(f"Generating message for {phase_name} on {date_str}...")
     message = generate_message(phase_name, month)
     phases_with_messages.append((date_str, message))
+    time.sleep(5)
 
 write_to_sheet(phases_with_messages)
 print("Done!")
