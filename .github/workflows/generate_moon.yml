@@ -20,7 +20,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install ephem google-genai gspread google-auth
+        run: pip install ephem anthropic gspread google-auth
 
       - name: Generate moon reminders
         env:
