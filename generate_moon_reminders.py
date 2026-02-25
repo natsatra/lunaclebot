@@ -1,7 +1,7 @@
 import os
 import json
 import ephem
-from google import genai
+import anthropic
 from datetime import datetime
 import gspread
 import time
@@ -39,17 +39,22 @@ def get_moon_phases(year):
     return sorted(phases)
 
 def generate_message(phase_name, month):
-    client = genai.Client(api_key=GEMINI_API_KEY)
-    prompt = (
-        f"Write a short astrological meaning for the {phase_name} in {month}. "
-        f"2-3 sentences max. Focus on themes, energy, and what to reflect on. "
-        f"Warm and inspiring tone. Plain text only, no markdown, no bullet points."
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    response = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=200,
+        messages=[
+            {
+                "role": "user",
+                "content": (
+                    f"Write a short astrological meaning for the {phase_name} in {month}. "
+                    f"2-3 sentences max. Focus on themes, energy, and what to reflect on. "
+                    f"Warm and inspiring tone. Plain text only, no markdown, no bullet points."
+                )
+            }
+        ]
     )
-    response = client.models.generate_content(
-        model="gemini-2.0-flash",
-        contents=prompt
-    )
-    return response.text.strip()
+    return response.content[0].text.strip()
 
 def write_to_sheet(phases_with_messages):
     creds_dict = json.loads(GOOGLE_CREDENTIALS)
