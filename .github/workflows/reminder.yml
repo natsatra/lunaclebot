@@ -2,11 +2,13 @@ name: Daily Reminder
 
 on:
   schedule:
-    - cron: '15 3 * * *'  # 8:45 AM IST — sync runs first
+    - cron: '15 3 * * *'  # 8:45 AM IST
   workflow_dispatch:
+    branches:
+      - modifications
 
 jobs:
-  sync-sheet:
+  sync-and-remind:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,28 +19,12 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests PyGithub
+        run: pip install requests python-telegram-bot pytz
 
       - name: Sync Google Sheet to reminders.json
         env:
           SHEET_ID: ${{ secrets.SHEET_ID }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          REPO_NAME: ${{ secrets.REPO_NAME }}
         run: python sync_sheet.py
-
-  send-reminder:
-    runs-on: ubuntu-latest
-    needs: sync-sheet
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: pip install python-telegram-bot pytz
 
       - name: Run reminder script
         env:
