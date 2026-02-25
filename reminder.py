@@ -19,7 +19,7 @@ async def send():
         message = reminders[today]
         bot = Bot(token=TOKEN)
         for chat_id in CHAT_IDS:
-            await bot.send_message(chat_id=chat_id.strip(), text=message)
+            await bot.send_message(chat_id=chat_id.strip(), text=message, parse_mode="Markdown")
     else:
         print(f"No reminder for {today}")
 
