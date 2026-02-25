@@ -2,6 +2,9 @@ name: Generate Moon Reminders
 
 on:
   workflow_dispatch:
+  push: #remove after testing
+    branches: # remove after testing
+      - AI-workflow-trial #remove this after testing
   schedule:
     - cron: '0 0 1 1 *'  # auto runs every Jan 1st
 
