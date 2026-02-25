@@ -1,7 +1,7 @@
 name: Generate Moon Reminders
 
 on:
-  workflow_dispatch:  # run manually once a year
+  workflow_dispatch:
   schedule:
     - cron: '0 0 1 1 *'  # auto runs every Jan 1st
 
