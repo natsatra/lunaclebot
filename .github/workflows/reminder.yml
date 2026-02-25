@@ -2,7 +2,7 @@ name: Daily Reminder
 
 on:
   schedule:
-    - cron: '15 3 * * *'  # 8:45 AM IST
+    - cron: '0 2 * * *'  # 7:30 AM IST
   workflow_dispatch:
     branches:
       - modifications
