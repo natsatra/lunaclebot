@@ -1,13 +1,34 @@
-name: Monthly Reminder
+name: Daily Reminder
 
 on:
   schedule:
-    - cron: '30 1 * * *'  # 7:00 AM IST
-  workflow_dispatch:  # allows manual triggering for testing
+    - cron: '15 3 * * *'  # 8:45 AM IST — sync runs first
+  workflow_dispatch:
 
 jobs:
+  sync-sheet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests PyGithub
+
+      - name: Sync Google Sheet to reminders.json
+        env:
+          SHEET_ID: ${{ secrets.SHEET_ID }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          REPO_NAME: ${{ secrets.REPO_NAME }}
+        run: python sync_sheet.py
+
   send-reminder:
     runs-on: ubuntu-latest
+    needs: sync-sheet
     steps:
       - uses: actions/checkout@v3
 
@@ -22,5 +43,5 @@ jobs:
       - name: Run reminder script
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_IDS: ${{ secrets.TELEGRAM_CHAT_IDS }}
         run: python reminder.py
