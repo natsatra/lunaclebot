@@ -8,7 +8,7 @@ import time
 from google.oauth2.service_account import Credentials
 
 # Load credentials
-GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
+ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 SHEET_ID = os.environ["SHEET_ID"]
 GOOGLE_CREDENTIALS = os.environ["GOOGLE_CREDENTIALS"]
 
