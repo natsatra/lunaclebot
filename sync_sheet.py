@@ -11,6 +11,7 @@ def fetch_sheet():
     response.raise_for_status()
     
     reminders = {}
+    response.encoding = "utf-8"
     reader = csv.DictReader(response.text.splitlines())
     for row in reader:
         if row["date"] and row["message"]:
@@ -19,7 +20,7 @@ def fetch_sheet():
 
 def update_repo(reminders):
     content = json.dumps(reminders, indent=2)
-    with open("reminders.json", "w") as f:
+    with open("reminders.json", "w", encoding="utf-8") as f:
         f.write(content)
     print("reminders.json updated successfully")
 
