@@ -2,7 +2,6 @@ import os
 import json
 import requests
 import csv
-from github import Github
 
 SHEET_ID = os.environ["SHEET_ID"]
 
