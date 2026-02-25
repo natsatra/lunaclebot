@@ -1,7 +1,7 @@
 import os
 import json
 import ephem
-import google.generativeai as genai
+from google import genai
 from datetime import datetime
 import gspread
 from google.oauth2.service_account import Credentials
@@ -11,7 +11,7 @@ GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
 SHEET_ID = os.environ["SHEET_ID"]
 GOOGLE_CREDENTIALS = os.environ["GOOGLE_CREDENTIALS"]
 
-genai.configure(api_key=GEMINI_API_KEY)
+#genai.configure(api_key=GEMINI_API_KEY)
 
 def get_moon_phases(year):
     phases = []
@@ -38,13 +38,16 @@ def get_moon_phases(year):
     return sorted(phases)
 
 def generate_message(phase_name, month):
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    client = genai.Client(api_key=GEMINI_API_KEY)
     prompt = (
         f"Write a short astrological meaning for the {phase_name} in {month}. "
         f"2-3 sentences max. Focus on themes, energy, and what to reflect on. "
         f"Warm and inspiring tone. Plain text only, no markdown, no bullet points."
     )
-    response = model.generate_content(prompt)
+    response = client.models.generate_content(
+        model="gemini-2.0-flash",
+        contents=prompt
+    )
     return response.text.strip()
 
 def write_to_sheet(phases_with_messages):
