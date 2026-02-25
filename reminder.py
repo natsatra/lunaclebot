@@ -16,10 +16,15 @@ async def send():
     today = datetime.now(IST).date().isoformat()
 
     if today in reminders:
-        message = reminders[today]
         bot = Bot(token=TOKEN)
-        for chat_id in CHAT_IDS:
-            await bot.send_message(chat_id=chat_id.strip(), text=message, parse_mode="HTML")
+        messages = reminders[today]  # this is now a list
+        for message in messages:
+            for chat_id in CHAT_IDS:
+                await bot.send_message(
+                    chat_id=chat_id.strip(),
+                    text=message,
+                    parse_mode="HTML"
+                )
     else:
         print(f"No reminder for {today}")
 
