@@ -5,6 +5,9 @@ import ephem
 import gspread
 from datetime import datetime
 from google.oauth2.service_account import Credentials
+from datetime import timezone, timedelta
+
+IST = timezone(timedelta(hours=5, minutes=30))
 
 SHEET_ID = os.environ["SHEET_ID"]
 GOOGLE_CREDENTIALS = os.environ["GOOGLE_CREDENTIALS"]
@@ -60,7 +63,7 @@ def get_celestial_events(year):
             (ephem.next_last_quarter_moon, "Last Quarter Moon"),
         ]:
             result = func(date)
-            dt = ephem.Date(result).datetime()
+            dt = ephem.Date(result).datetime().replace(tzinfo=timezone.utc).astimezone(IST)
             date_str = dt.strftime('%Y-%m-%d')
             key = f"{date_str}-{name}"
             if dt.year == year and key not in seen:
@@ -80,7 +83,7 @@ def get_celestial_events(year):
     ]
     for func, name in seasons:
         result = func(f'{year}/1/1')
-        dt = ephem.Date(result).datetime()
+        dt = ephem.Date(result).datetime().replace(tzinfo=timezone.utc).astimezone(IST)
         if dt.year == year:
             add_event(dt.strftime('%Y-%m-%d'), name)
 
