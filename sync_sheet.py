@@ -19,7 +19,7 @@ def fetch_sheet():
     return reminders
 
 def update_repo(reminders):
-    content = json.dumps(reminders, indent=2)
+    content = json.dumps(reminders, indent=2, ensure_ascii=False)
     with open("reminders.json", "w", encoding="utf-8") as f:
         f.write(content)
     print("reminders.json updated successfully")
