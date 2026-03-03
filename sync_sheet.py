@@ -19,8 +19,8 @@ def fetch_sheet():
     return reminders
 
 def update_repo(reminders):
-    content = json.dumps(reminders, indent=2, ensure_ascii=False)
-    with open("reminders.json", "w", encoding="utf-8") as f:
+    content = json.dumps(reminders, indent=2, ensure_ascii=False) # keeps emojis as real characters
+    with open("reminders.json", "w", encoding="utf-8") as f: # writes those real characters correctly to disk
         f.write(content)
     print("reminders.json updated successfully")
 
