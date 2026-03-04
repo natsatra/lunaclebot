@@ -1,38 +1,536 @@
 {
-  "2026-03-03": "It's Total Lunar eclipse today! It's also a Full Moon day, obviously. 🌝 Fun fact: Today's full moon is called the Worm moon. 🪱",
-  "2026-03-13": "It's Friday the 13th! 👻 Nothing weird going on with the moon today.",
-  "2026-03-19": "Today is New Moon day! 🌚 Time is ideal for new beginnings and intentions.",
-  "2026-03-20": "Pagan holiday alert: <b>Ostara</b>. A powerful festival that celebrates the 🌸<b><i>spring equinox</i></b>🌸, a time of balance, growth, and the return of light. For women, Ostara is a moment to honor our own cycles of renewal and embrace the feminine energy of creation, fertility, and transformation.",
-  "2026-03-26": "It's Rama navami today! 🚩",
-  "2026-04-02": "Today is Full Moon day! 🌕 Time to recharge!Fun fact: Today's full moon is called Pink moon. 🩷",
-  "2026-04-14": "Wish u a happy vishu! 🌾",
-  "2026-04-17": "Today is New Moon day! 🌚 Time is ideal for new beginnings and intentions.",
-  "2026-05-01": "Pagan holiday alert: <b>Beltane</b>. The celebration of fertility, passion, and creative expression.Feminine energy is alive and flourishing, guiding us to embrace our sensuality, intuition, and the beauty of creation.",
-  "2026-05-16": "Today is New Moon day! 🌚 Time is ideal for new beginnings and intentions.",
-  "2026-05-31": "Today is Full Moon day! 🌕We've got a Blue Moon situation today - go do something weird and wonderful!",
-  "2026-06-15": "Today is New Moon day! 🌚 Time is ideal for new beginnings and intentions.",
-  "2026-06-21": "Pagan holiday alert: <b>Litha</b>. The ☀️<b><i>Summer Solstice</i></b>☀️, a moment of peak energy and vitality.This is when the sun reaches its highest point, and we are reminded to honor the fullness of our feminine power and the radiant energy we carry within.",
-  "2026-06-30": "Today is Full Moon day! 🌕 Time to recharge!",
-  "2026-07-14": "Today is New Moon day! 🌚 Time is ideal for new beginnings and intentions.",
-  "2026-07-29": "Today is Full Moon day! 🌕 Time to recharge!",
-  "2026-08-01": "Pagan holiday alert: <b>Lammas</b>. A time for celebrating the harvest.It’s a moment to reflect on the fruits of our labor, the abundance that comes from nurturing ourselves and others, and to honor the cycles of giving and receiving.",
-  "2026-08-12": "It's New Moon day! 🌚It's also total solar eclipse day—but not visible in India.",
-  "2026-08-13": "Obon/Hungry ghost festival starts today! Stay safe out there and try not to go out in the dark. 😇",
-  "2026-08-16": "Obon ends today!",
-  "2026-08-28": "It's Partial Lunar eclipse today! It's also a Full Moon day, obviously. 🌝 Not so fun fact: Today's Lunar eclipse is not visible in India.",
-  "2026-09-04": "Krishna janmashtami day! 🪈🦚",
-  "2026-09-11": "Today is New Moon day! 🌚 Time is ideal for new beginnings and intentions.",
-  "2026-09-14": "Ganesh chathurthi day :)",
-  "2026-09-21": "Pagan holiday alert: <b>Mabon</b>. The 🍁<b><i>Autumn Equinox</i></b>🍁, a time for balance and reflection. As we transition into the dark half of the year, this festival invites us to honor both our light and our shadows, embracing the wisdom of our inner knowing.",
-  "2026-09-26": "Today is Full Moon day! 🌕 Time to recharge!",
-  "2026-10-10": "It's Mahalaya amavasya today! Naturally, it's New Moon day! 🌚",
-  "2026-10-11": "Navaratri begins today!",
-  "2026-10-20": "Happy Dussera :)",
-  "2026-10-26": "Today is Full Moon day! 🌕 Time to recharge!",
-  "2026-10-31": "Pagan holiday alert: <b>Samhain</b> (October 31st - November 1st): The Festival of the Dead, a sacred time to connect with our ancestors and reflect on the impermanence of life. This is a time for introspection, honoring the cyclical nature of life, and celebrating transformation.",
-  "2026-11-09": "Today is New Moon day! 🌚 Time is ideal for new beginnings and intentions.",
-  "2026-11-24": "Today is Full Moon day! 🌕 Time to recharge!",
-  "2026-12-09": "Today is New Moon day! 🌚 Time is ideal for new beginnings and intentions.",
-  "2026-12-21": "Pagan holiday alert: </b>Yule</b>. The ❄️<b><i>Winter Solstice</i></b>❄️, a moment of stillness and rebirth. As the longest night of the year, Yule reminds us that even in the darkness, light is returning. This is a time of renewal and reflection, where we rest and prepare for the energy of spring to emerge once more.",
-  "2026-12-24": "This year's last Full Moon day! 🌕 Time to recharge!"
+  "2026-01-03": [
+    {
+      "message": "Full Moon — The moon is at peak illumination — a time for release, reflection, and culmination.Quadrantid Meteor Shower — The first major meteor shower of the year — short but intense peak, best before dawn.",
+      "time": ""
+    }
+  ],
+  "2026-01-10": [
+    {
+      "message": "Last Quarter Moon — The moon wanes to half — a time to let go, rest, and tie up loose ends.",
+      "time": ""
+    }
+  ],
+  "2026-01-11": [
+    {
+      "message": "Mars Opposition — Mars is closest to Earth — energy, ambition, and drive are at their peak.Venus Opposition — Venus is closest to Earth and fully illuminated — themes of love and beauty are heightened.",
+      "time": ""
+    }
+  ],
+  "2026-01-19": [
+    {
+      "message": "New Moon — The moon begins a new cycle — ideal for setting intentions and new beginnings.",
+      "time": ""
+    }
+  ],
+  "2026-01-26": [
+    {
+      "message": "First Quarter Moon — The moon is half lit — a time to take action and push through challenges.",
+      "time": ""
+    }
+  ],
+  "2026-02-02": [
+    {
+      "message": "Full Moon — The moon is at peak illumination — a time for release, reflection, and culmination.",
+      "time": ""
+    }
+  ],
+  "2026-02-09": [
+    {
+      "message": "Last Quarter Moon — The moon wanes to half — a time to let go, rest, and tie up loose ends.",
+      "time": ""
+    }
+  ],
+  "2026-02-17": [
+    {
+      "message": "New Moon — The moon begins a new cycle — ideal for setting intentions and new beginnings.",
+      "time": ""
+    }
+  ],
+  "2026-02-24": [
+    {
+      "message": "First Quarter Moon — The moon is half lit — a time to take action and push through challenges.",
+      "time": ""
+    }
+  ],
+  "2026-03-03": [
+    {
+      "message": "Full Moon — The moon is at peak illumination — a time for release, reflection, and culmination.",
+      "time": ""
+    },
+    {
+      "message": "It's Total Lunar eclipse today! It's also a Full Moon day, obviously. 🌝 Fun fact: Today's full moon is called the Worm moon. 🪱",
+      "time": ""
+    }
+  ],
+  "2026-03-11": [
+    {
+      "message": "Last Quarter Moon — The moon wanes to half — a time to let go, rest, and tie up loose ends.",
+      "time": ""
+    }
+  ],
+  "2026-03-19": [
+    {
+      "message": "New Moon — The moon begins a new cycle — ideal for setting intentions and new beginnings.",
+      "time": ""
+    },
+    {
+      "message": "Today is New Moon day! 🌚 Time is ideal for new beginnings and intentions.",
+      "time": ""
+    }
+  ],
+  "2026-03-20": [
+    {
+      "message": "Spring Equinox — Day and night are equal length — the season of renewal and fresh starts begins.",
+      "time": ""
+    },
+    {
+      "message": "<b><i>Lunacle bot wishes you a very happy birthday, Arya chan!</i></b>🌸 🥳🎉",
+      "time": "0:00"
+    },
+    {
+      "message": "Pagan holiday alert: <b>Ostara</b>. A powerful festival that celebrates the 🌸<b><i>spring equinox</i></b>🌸, a time of balance, growth, and the return of light. For women, Ostara is a moment to honor our own cycles of renewal and embrace the feminine energy of creation, fertility, and transformation.",
+      "time": ""
+    }
+  ],
+  "2026-03-26": [
+    {
+      "message": "First Quarter Moon — The moon is half lit — a time to take action and push through challenges.",
+      "time": ""
+    },
+    {
+      "message": "It's Rama navami today! 🚩",
+      "time": ""
+    }
+  ],
+  "2026-04-02": [
+    {
+      "message": "Full Moon — The moon is at peak illumination — a time for release, reflection, and culmination.",
+      "time": ""
+    },
+    {
+      "message": "Today is Full Moon day! 🌕 Time to recharge!Fun fact: Today's full moon is called Pink moon. 🩷",
+      "time": "18:00"
+    }
+  ],
+  "2026-04-10": [
+    {
+      "message": "Last Quarter Moon — The moon wanes to half — a time to let go, rest, and tie up loose ends.",
+      "time": ""
+    }
+  ],
+  "2026-04-17": [
+    {
+      "message": "New Moon — The moon begins a new cycle — ideal for setting intentions and new beginnings.",
+      "time": ""
+    },
+    {
+      "message": "Today is New Moon day! 🌚 Time is ideal for new beginnings and intentions.",
+      "time": ""
+    }
+  ],
+  "2026-04-24": [
+    {
+      "message": "First Quarter Moon — The moon is half lit — a time to take action and push through challenges.",
+      "time": ""
+    }
+  ],
+  "2026-05-01": [
+    {
+      "message": "Full Moon — The moon is at peak illumination — a time for release, reflection, and culmination.",
+      "time": ""
+    },
+    {
+      "message": "Today is Full Moon day! 🌕 Time to recharge!",
+      "time": "18:00"
+    },
+    {
+      "message": "Pagan holiday alert: <b>Beltane</b>. The celebration of fertility, passion, and creative expression.Feminine energy is alive and flourishing, guiding us to embrace our sensuality, intuition, and the beauty of creation.",
+      "time": ""
+    }
+  ],
+  "2026-05-06": [
+    {
+      "message": "Eta Aquarid Meteor Shower — Debris from Halley's Comet lights up the sky — best viewed in the Southern Hemisphere.",
+      "time": ""
+    }
+  ],
+  "2026-05-10": [
+    {
+      "message": "Last Quarter Moon — The moon wanes to half — a time to let go, rest, and tie up loose ends.",
+      "time": ""
+    }
+  ],
+  "2026-05-17": [
+    {
+      "message": "New Moon — The moon begins a new cycle — ideal for setting intentions and new beginnings.",
+      "time": ""
+    }
+  ],
+  "2026-05-23": [
+    {
+      "message": "First Quarter Moon — The moon is half lit — a time to take action and push through challenges.",
+      "time": ""
+    }
+  ],
+  "2026-05-31": [
+    {
+      "message": "Full Moon — The moon is at peak illumination — a time for release, reflection, and culmination.",
+      "time": ""
+    },
+    {
+      "message": "Today is Full Moon day! 🌕We've got a Blue Moon situation today - go do something weird and wonderful!",
+      "time": "18:00"
+    }
+  ],
+  "2026-06-08": [
+    {
+      "message": "Last Quarter Moon — The moon wanes to half — a time to let go, rest, and tie up loose ends.",
+      "time": ""
+    }
+  ],
+  "2026-06-15": [
+    {
+      "message": "New Moon — The moon begins a new cycle — ideal for setting intentions and new beginnings.",
+      "time": ""
+    },
+    {
+      "message": "Today is New Moon day! 🌚 Time is ideal for new beginnings and intentions.",
+      "time": ""
+    }
+  ],
+  "2026-06-21": [
+    {
+      "message": "Summer Solstice — The longest day of the year — celebrate abundance, light, and full energy.",
+      "time": ""
+    },
+    {
+      "message": "Pagan holiday alert: <b>Litha</b>. The ☀️<b><i>Summer Solstice</i></b>☀️, a moment of peak energy and vitality.This is when the sun reaches its highest point, and we are reminded to honor the fullness of our feminine power and the radiant energy we carry within.",
+      "time": ""
+    }
+  ],
+  "2026-06-22": [
+    {
+      "message": "First Quarter Moon — The moon is half lit — a time to take action and push through challenges.",
+      "time": ""
+    }
+  ],
+  "2026-06-30": [
+    {
+      "message": "Full Moon — The moon is at peak illumination — a time for release, reflection, and culmination.",
+      "time": ""
+    },
+    {
+      "message": "Today is Full Moon day! 🌕 Time to recharge!",
+      "time": "18:00"
+    }
+  ],
+  "2026-07-08": [
+    {
+      "message": "Last Quarter Moon — The moon wanes to half — a time to let go, rest, and tie up loose ends.",
+      "time": ""
+    }
+  ],
+  "2026-07-14": [
+    {
+      "message": "New Moon — The moon begins a new cycle — ideal for setting intentions and new beginnings.",
+      "time": ""
+    },
+    {
+      "message": "Today is New Moon day! 🌚 Time is ideal for new beginnings and intentions.",
+      "time": ""
+    }
+  ],
+  "2026-07-21": [
+    {
+      "message": "First Quarter Moon — The moon is half lit — a time to take action and push through challenges.",
+      "time": ""
+    }
+  ],
+  "2026-07-29": [
+    {
+      "message": "Full Moon — The moon is at peak illumination — a time for release, reflection, and culmination.",
+      "time": ""
+    },
+    {
+      "message": "Today is Full Moon day! 🌕 Time to recharge!",
+      "time": "18:00"
+    }
+  ],
+  "2026-07-30": [
+    {
+      "message": "Jupiter Opposition — Jupiter is closest to Earth — expansion, luck, and growth are amplified.",
+      "time": ""
+    }
+  ],
+  "2026-08-06": [
+    {
+      "message": "Last Quarter Moon — The moon wanes to half — a time to let go, rest, and tie up loose ends.",
+      "time": ""
+    }
+  ],
+  "2026-08-12": [
+    {
+      "message": "New Moon — The moon begins a new cycle — ideal for setting intentions and new beginnings.Perseid Meteor Shower — One of the best meteor showers of the year — up to 100 meteors per hour at peak.",
+      "time": ""
+    },
+    {
+      "message": "It's New Moon day! 🌚It's also total solar eclipse day—but not visible in India. What a waste!",
+      "time": ""
+    }
+  ],
+  "2026-08-20": [
+    {
+      "message": "First Quarter Moon — The moon is half lit — a time to take action and push through challenges.",
+      "time": ""
+    }
+  ],
+  "2026-08-28": [
+    {
+      "message": "Full Moon — The moon is at peak illumination — a time for release, reflection, and culmination.",
+      "time": ""
+    },
+    {
+      "message": "It's Partial Lunar eclipse today! It's also a Full Moon day, obviously. 🌝 Not so fun fact: Today's Lunar eclipse is not visible in India.",
+      "time": "18:00"
+    }
+  ],
+  "2026-09-04": [
+    {
+      "message": "Last Quarter Moon — The moon wanes to half — a time to let go, rest, and tie up loose ends.",
+      "time": ""
+    },
+    {
+      "message": "Krishna janmashtami day! 🪈🦚",
+      "time": ""
+    }
+  ],
+  "2026-09-11": [
+    {
+      "message": "New Moon — The moon begins a new cycle — ideal for setting intentions and new beginnings.",
+      "time": ""
+    },
+    {
+      "message": "Today is New Moon day! 🌚 Time is ideal for new beginnings and intentions.",
+      "time": ""
+    }
+  ],
+  "2026-09-19": [
+    {
+      "message": "First Quarter Moon — The moon is half lit — a time to take action and push through challenges.",
+      "time": ""
+    }
+  ],
+  "2026-09-23": [
+    {
+      "message": "Autumn Equinox — Day and night are equal length — a time for harvest, balance, and gratitude.",
+      "time": ""
+    }
+  ],
+  "2026-09-26": [
+    {
+      "message": "Full Moon — The moon is at peak illumination — a time for release, reflection, and culmination.",
+      "time": ""
+    },
+    {
+      "message": "Today is Full Moon day! 🌕 Time to recharge!",
+      "time": "18:00"
+    }
+  ],
+  "2026-10-03": [
+    {
+      "message": "Last Quarter Moon — The moon wanes to half — a time to let go, rest, and tie up loose ends.",
+      "time": ""
+    }
+  ],
+  "2026-10-10": [
+    {
+      "message": "New Moon — The moon begins a new cycle — ideal for setting intentions and new beginnings.",
+      "time": ""
+    },
+    {
+      "message": "It's Mahalaya amavasya today! Naturally, it's New Moon day! 🌚",
+      "time": ""
+    }
+  ],
+  "2026-10-18": [
+    {
+      "message": "First Quarter Moon — The moon is half lit — a time to take action and push through challenges.",
+      "time": ""
+    }
+  ],
+  "2026-10-21": [
+    {
+      "message": "Orionid Meteor Shower — Halley's Comet debris produces fast bright meteors — best viewed after midnight.",
+      "time": ""
+    }
+  ],
+  "2026-10-26": [
+    {
+      "message": "Full Moon — The moon is at peak illumination — a time for release, reflection, and culmination.",
+      "time": ""
+    },
+    {
+      "message": "Today is Full Moon day! 🌕 Time to recharge!",
+      "time": "18:00"
+    }
+  ],
+  "2026-11-02": [
+    {
+      "message": "Last Quarter Moon — The moon wanes to half — a time to let go, rest, and tie up loose ends.",
+      "time": ""
+    }
+  ],
+  "2026-11-09": [
+    {
+      "message": "New Moon — The moon begins a new cycle — ideal for setting intentions and new beginnings.",
+      "time": ""
+    },
+    {
+      "message": "Today is New Moon day! 🌚 Time is ideal for new beginnings and intentions.",
+      "time": ""
+    }
+  ],
+  "2026-11-17": [
+    {
+      "message": "First Quarter Moon — The moon is half lit — a time to take action and push through challenges.Leonid Meteor Shower — The Leonids peak tonight — known for occasional meteor storms, best viewed after midnight.",
+      "time": ""
+    }
+  ],
+  "2026-11-24": [
+    {
+      "message": "Full Moon — The moon is at peak illumination — a time for release, reflection, and culmination.",
+      "time": ""
+    },
+    {
+      "message": "Today is Full Moon day! 🌕 Time to recharge!",
+      "time": "18:00"
+    }
+  ],
+  "2026-12-01": [
+    {
+      "message": "Last Quarter Moon — The moon wanes to half — a time to let go, rest, and tie up loose ends.",
+      "time": ""
+    }
+  ],
+  "2026-12-09": [
+    {
+      "message": "New Moon — The moon begins a new cycle — ideal for setting intentions and new beginnings.",
+      "time": ""
+    },
+    {
+      "message": "Today is New Moon day! 🌚 Time is ideal for new beginnings and intentions.",
+      "time": ""
+    }
+  ],
+  "2026-12-13": [
+    {
+      "message": "Geminid Meteor Shower — The most reliable meteor shower of the year — up to 120 multicolored meteors per hour.",
+      "time": ""
+    }
+  ],
+  "2026-12-17": [
+    {
+      "message": "First Quarter Moon — The moon is half lit — a time to take action and push through challenges.",
+      "time": ""
+    }
+  ],
+  "2026-12-22": [
+    {
+      "message": "Winter Solstice — The shortest day of the year — embrace stillness, rest, and inner reflection.",
+      "time": ""
+    }
+  ],
+  "2026-12-24": [
+    {
+      "message": "Full Moon — The moon is at peak illumination — a time for release, reflection, and culmination.",
+      "time": ""
+    },
+    {
+      "message": "This year's last Full Moon day! 🌕 Time to recharge!",
+      "time": "18:00"
+    }
+  ],
+  "2026-12-31": [
+    {
+      "message": "Last Quarter Moon — The moon wanes to half — a time to let go, rest, and tie up loose ends.",
+      "time": ""
+    }
+  ],
+  "2026-03-13": [
+    {
+      "message": "It's <b>Friday the 13th!</b> 👻 Nothing weird going on with the moon today. Stay spooky.",
+      "time": ""
+    }
+  ],
+  "2026-04-14": [
+    {
+      "message": "Wish u a happy vishu! 🌾",
+      "time": ""
+    }
+  ],
+  "2026-05-16": [
+    {
+      "message": "Today is New Moon day! 🌚 Time is ideal for new beginnings and intentions.",
+      "time": ""
+    }
+  ],
+  "2026-08-01": [
+    {
+      "message": "Pagan holiday alert: <b>Lammas</b>. A time for celebrating the harvest.It’s a moment to reflect on the fruits of our labor, the abundance that comes from nurturing ourselves and others, and to honor the cycles of giving and receiving.",
+      "time": ""
+    }
+  ],
+  "2026-08-13": [
+    {
+      "message": "Obon/Hungry ghost festival starts today! Stay safe out there and try not to go out in the dark. 😇",
+      "time": ""
+    }
+  ],
+  "2026-08-16": [
+    {
+      "message": "Obon ends today!",
+      "time": ""
+    }
+  ],
+  "2026-09-14": [
+    {
+      "message": "Ganesh chathurthi day :)",
+      "time": ""
+    }
+  ],
+  "2026-09-21": [
+    {
+      "message": "Pagan holiday alert: <b>Mabon</b>. The 🍁<b><i>Autumn Equinox</i></b>🍁, a time for balance and reflection. As we transition into the dark half of the year, this festival invites us to honor both our light and our shadows, embracing the wisdom of our inner knowing.",
+      "time": ""
+    }
+  ],
+  "2026-10-11": [
+    {
+      "message": "Navaratri begins today!",
+      "time": ""
+    }
+  ],
+  "2026-10-20": [
+    {
+      "message": "Happy Dussera :)",
+      "time": ""
+    }
+  ],
+  "2026-10-31": [
+    {
+      "message": "Happy halloween! 🎃",
+      "time": ""
+    },
+    {
+      "message": "Pagan holiday alert: <b>Samhain</b> (October 31st - November 1st): The Festival of the Dead, a sacred time to connect with our ancestors and reflect on the impermanence of life. This is a time for introspection, honoring the cyclical nature of life, and celebrating transformation.",
+      "time": ""
+    }
+  ],
+  "2026-12-21": [
+    {
+      "message": "Pagan holiday alert: </b>Yule</b>. The ❄️<b><i>Winter Solstice</i></b>❄️, a moment of stillness and rebirth. As the longest night of the year, Yule reminds us that even in the darkness, light is returning. This is a time of renewal and reflection, where we rest and prepare for the energy of spring to emerge once more.",
+      "time": ""
+    }
+  ]
 }
