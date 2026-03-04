@@ -1,28 +1,48 @@
 import os
-import csv
 import json
 import requests
+import csv
 
 SHEET_ID = os.environ["SHEET_ID"]
 
-def fetch_sheet():
-    url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv"
+def fetch_tab(tab_name):
+    url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq?tqx=out:csv&sheet={tab_name}"
     response = requests.get(url)
-    response.raise_for_status()
-    
-    reminders = {}
     response.encoding = "utf-8"
+    response.raise_for_status()
+
+    reminders = []
     reader = csv.DictReader(response.text.splitlines())
     for row in reader:
         if row["date"] and row["message"]:
-            reminders[row["date"].strip()] = row["message"].strip()
+            reminders.append({
+                "date": row["date"].strip(),
+                "message": row["message"].strip(),
+                "time": row.get("time", "").strip()
+            })
     return reminders
 
-def update_repo(reminders):
-    content = json.dumps(reminders, indent=2, ensure_ascii=False) # keeps emojis as real characters
-    with open("reminders.json", "w", encoding="utf-8") as f: # writes those real characters correctly to disk
+def merge_reminders():
+    moon = fetch_tab("moon_phases")
+    personal = fetch_tab("personal")
+
+    merged = {}
+    for entry in moon + personal:
+        date = entry["date"]
+        if date not in merged:
+            merged[date] = []
+        merged[date].append({
+            "message": entry["message"],
+            "time": entry["time"]
+        })
+
+    return merged
+
+def write_json(reminders):
+    content = json.dumps(reminders, indent=2, ensure_ascii=False)
+    with open("reminders.json", "w", encoding="utf-8") as f:
         f.write(content)
     print("reminders.json updated successfully")
 
-reminders = fetch_sheet()
-update_repo(reminders)
+reminders = merge_reminders()
+write_json(reminders)
