@@ -44,5 +44,6 @@ def write_json(reminders):
         f.write(content)
     print("reminders.json updated successfully")
 
-reminders = merge_reminders()
-write_json(reminders)
+if __name__ == "__main__":
+    reminders = merge_reminders()
+    write_json(reminders)
