@@ -7,7 +7,8 @@ import time
 SHEET_ID = os.environ["SHEET_ID"]
 
 def fetch_tab(tab_name, retries=3, delay=5):
-     url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq?tqx=out:csv&sheet={tab_name}"
+     #url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq?tqx=out:csv&sheet={tab_name}"
+     url = 
      for attempt in range(retries):
         try:
             response = requests.get(url, timeout=10)
