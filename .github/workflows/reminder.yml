@@ -6,9 +6,6 @@ on:
     - cron: '0 13 * * *'  # 6:30 PM IST
   workflow_dispatch:
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   sync-and-remind:
     runs-on: ubuntu-latest
