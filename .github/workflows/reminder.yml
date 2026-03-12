@@ -5,15 +5,18 @@ on:
     - cron: '0 0 * * *'   # 5:30 AM IST
     - cron: '0 13 * * *'  # 6:30 PM IST
   workflow_dispatch:
+  workflow_dispatch:
+    branches:
+      - modifications
 
 jobs:
   sync-and-remind:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
@@ -24,18 +27,6 @@ jobs:
         env:
           SHEET_ID: ${{ secrets.SHEET_ID }}
         run: python sync_sheet.py
-
-      - name: Commit updated reminders.json
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add reminders.json
-          git diff --staged --quiet && echo "No changes to commit" && exit 0
-          git pull --rebase origin main
-          git commit -m "sync: update reminders.json from Google Sheet"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run reminder script
         env:
