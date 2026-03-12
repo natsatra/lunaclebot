@@ -2,8 +2,8 @@ name: Daily Reminder
 
 on:
   schedule:
-    - cron: '0 2 * * *'   # 7:30 AM IST
-    - cron: '30 13 * * *' # 7:00 PM IST
+    - cron: '0 0 * * *'   # 5:30 AM IST
+    - cron: '0 13 * * *' # 6:30 PM IST
   workflow_dispatch:
 
 jobs:
