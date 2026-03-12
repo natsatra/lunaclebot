@@ -6,6 +6,9 @@ on:
     - cron: '0 13 * * *'  # 6:30 PM IST
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   sync-and-remind:
     runs-on: ubuntu-latest
@@ -32,7 +35,7 @@ jobs:
           git add reminders.json
           git diff --staged --quiet && echo "No changes to commit" && exit 0
           git pull --rebase origin main
-          git diff --staged --quiet || git commit -m "sync: update reminders.json from Google Sheet"
+          git commit -m "sync: update reminders.json from Google Sheet"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
