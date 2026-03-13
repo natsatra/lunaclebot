@@ -24,7 +24,7 @@ async def send():
             message = entry["message"]
             send_time = entry["time"] if entry["time"] else DEFAULT_TIME
 
-            if send_time == current_time:
+            if not send_time or send_time == current_time:
                 for chat_id in CHAT_IDS:
                     await bot.send_message(
                         chat_id=chat_id.strip(),
