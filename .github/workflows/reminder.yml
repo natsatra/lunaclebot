@@ -5,9 +5,7 @@ on:
     - cron: '0 0 * * *'   # 5:30 AM IST
     - cron: '0 13 * * *'  # 6:30 PM IST
   workflow_dispatch:
-    branches:
-      - modifications
-
+  
 jobs:
   sync-and-remind:
     runs-on: ubuntu-latest
