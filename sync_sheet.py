@@ -41,10 +41,11 @@ def merge_reminders():
         date = entry["date"]
         if date not in merged:
             merged[date] = []
-        merged[date].append({
-            "message": entry["message"],
-            "time": entry["time"]
-        })
+        if not any(e["message"] == entry["message"] for e in merged[date]):
+            merged[date].append({
+                "message": entry["message"],
+                "time": entry["time"]
+            })
 
     return merged
 
