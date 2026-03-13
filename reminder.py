@@ -22,7 +22,7 @@ async def send():
         bot = Bot(token=TOKEN)
         for entry in reminders[today]:
             message = entry["message"]
-            send_time = entry["time"] if entry["time"] else DEFAULT_TIME
+            send_time = entry["time"]
 
             if not send_time or send_time == current_time:
                 for chat_id in CHAT_IDS:
