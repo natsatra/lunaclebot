@@ -11,7 +11,7 @@
       "time": ""
     }
   ],
-  "2026-03-19": [
+  "2026-03-18": [
     {
       "message": "Today is New Moon day! 🌚 Time is ideal for new beginnings and intentions.",
       "time": ""
@@ -20,10 +20,6 @@
   "2026-03-20": [
     {
       "message": "<b><i>Lunacle bot wishes you a very happy birthday, Arya chan!</i></b>🌸 🥳🎉",
-      "time": "0:00"
-    },
-    {
-      "message": "Pagan holiday alert: <b>Ostara</b>. A powerful festival that celebrates the 🌸<b><i>spring equinox</i></b>🌸, a time of balance, growth, and the return of light. For women, Ostara is a moment to honor our own cycles of renewal and embrace the feminine energy of creation, fertility, and transformation.",
       "time": ""
     }
   ],
@@ -225,12 +221,6 @@
     {
       "message": "This year's last Full Moon day! 🌕 Time to recharge!",
       "time": "18:00"
-    }
-  ],
-  "2026-03-18": [
-    {
-      "message": "Today is New Moon day! 🌚 Time is ideal for new beginnings and intentions.",
-      "time": ""
     }
   ]
 }
