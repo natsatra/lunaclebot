@@ -4,7 +4,6 @@ on:
   schedule:
     - cron: '0 2 * * *'    # 7:30 AM IST
     - cron: '30 12 * * *'  # 6:00 PM IST
-    - cron: '30 18 * * *'  # midnight IST
   workflow_dispatch:
 
 jobs:
