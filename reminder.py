@@ -1,17 +1,15 @@
 import os
-import json
 import asyncio
 import pytz
 from datetime import datetime
 from telegram import Bot
+from sync_sheet import merge_reminders
 
 TOKEN = os.environ["TELEGRAM_TOKEN"]
 CHAT_IDS = os.environ["TELEGRAM_CHAT_IDS"].split(",")
-DEFAULT_TIME = "07:30"  # used when time column is empty
 
 async def send():
-    with open("reminders.json", encoding="utf-8") as f:
-        reminders = json.load(f)
+    reminders = merge_reminders()
 
     IST = pytz.timezone("Asia/Kolkata")
     now = datetime.now(IST)

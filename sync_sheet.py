@@ -1,5 +1,5 @@
 import os
-import json
+# import json
 import requests
 import csv
 import time
@@ -49,12 +49,12 @@ def merge_reminders():
 
     return merged
 
-def write_json(reminders):
-    content = json.dumps(reminders, indent=2, ensure_ascii=False)
-    with open("reminders.json", "w", encoding="utf-8") as f:
-        f.write(content)
-    print("reminders.json updated successfully")
+# def write_json(reminders):
+#     content = json.dumps(reminders, indent=2, ensure_ascii=False)
+#     with open("reminders.json", "w", encoding="utf-8") as f:
+#         f.write(content)
+#     print("reminders.json updated successfully")
 
-if __name__ == "__main__":
-    reminders = merge_reminders()
-    write_json(reminders)
+# if __name__ == "__main__":
+#     reminders = merge_reminders()
+#     write_json(reminders)
