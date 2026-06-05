@@ -24,4 +24,5 @@ jobs:
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_IDS: ${{ secrets.TELEGRAM_CHAT_IDS }}
+          SHEET_ID: ${{ secrets.SHEET_ID }}
         run: python reminder.py
