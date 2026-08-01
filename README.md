@@ -14,8 +14,6 @@ Lunacle sends a daily message about the current lunar phase, eclipses, and the o
 
 > It's **Friday the 13th!** 👻 Nothing weird going on with the moon today. Stay spooky!
 
-> **_Lunacle bot wishes you a very happy birthday, Arya chan!_** 🌸 🥳🎉
-
 Message the bot as a stranger and Lunacle answers politely, then quietly forwards the conversation to me:
 
 > Hi there! 👋
