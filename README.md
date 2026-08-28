@@ -35,7 +35,7 @@ flowchart LR
 
 The project has two halves that don't talk to each other:
 
-**Outbound (scheduled reminders).** A GitHub Actions cron fires twice a day. `sync_sheet.py` pulls two tabs from a Google Sheet, merges them into a date-keyed dict, and drops duplicate messages. `reminder.py` checks today's date in IST and sends anything scheduled to every chat ID in the list.
+**Outbound (scheduled reminders).** A GitHub Actions cron fires twice a day. `sync_sheet.py` pulls two tabs from a Google Sheet, merges them into a date-keyed dict, and drops duplicate messages. `reminder.py` works out which date the run belongs to, then sends everything on that date to every chat ID in the list.
 
 **Inbound (replies).** `worker.js` sits on a Cloudflare Worker as the Telegram webhook. It matches incoming text against a small table of canned responses, replies, and forwards the message to me — so the bot feels alive to strangers without pretending to be a chatbot.
 
@@ -47,7 +47,9 @@ The project has two halves that don't talk to each other:
 
 **Reminders used to be committed as JSON.** An earlier version ran a sync step that wrote `reminders.json` and committed it back to the repo on every run. That worked, but it filled the history with machine commits and let the data go stale between syncs. Fetching the sheet at send time removed the sync step, the commit step, and a whole class of "did the sync actually run?" failures. The `.gitignore` entry for `reminders.json` is the only trace left.
 
-**Two runs a day is the whole schedule.** A morning message and an evening one is what I actually want from a reminder bot — waking a workflow up every fifteen minutes to support arbitrary times would be a lot of machinery for a preference I don't have. So `time` resolves to the nearest scheduled run instead of being matched to the minute. That also makes the bot immune to GitHub's cron drift: a run that lands at 07:42 still counts as the 07:30 run, where exact matching would have silently sent nothing.
+**Two runs a day is the whole schedule.** A morning message and an evening one is what I actually want from a reminder bot — waking a workflow up every fifteen minutes to support arbitrary times would be a lot of machinery for a preference I don't have. Everything due on a date goes out on both runs, so there's nothing to route and no per-entry scheduling to reason about.
+
+**A run belongs to its cron, not to the clock it wakes up on.** GitHub starts scheduled runs late — a median of one to three hours, and once by ten. `reminder.py` used to ask the system what day it was and look that date up, which held until a delayed evening run woke at 03:59 the next morning, decided it was the morning run, and delivered the following day's reminder. It now reads `github.event.schedule` to see which cron started it, works back to when that cron last came round, and looks up *that* date. A run further behind than `MAX_DELAY_HOURS` is dropped rather than fired into the small hours.
 
 **The moon calendar is written by hand, on purpose.** The first version generated it with [`ephem`](https://rhodesmill.org/pyephem/), which computes lunar phases properly. Two things went wrong. The dates came out slightly off — `ephem` works in UTC, and IST is +5:30, so a phase falling late in the UTC day belongs to the *next* day here, and a bot that announces the full moon on the wrong evening is worse than no bot. And more fundamentally, phase timestamps weren't the data I wanted. "Full moon at 21:14 UTC" isn't a message; "today's full moon is called the Worm moon 🪱" is. Eclipses, the names, Friday the 13th, the small asides — none of that comes out of an ephemeris.
 
@@ -69,7 +71,7 @@ Both tabs share the same three columns:
 | --- | --- | --- | --- |
 | `date` | `YYYY-MM-DD` | yes | Matched against today's date in IST |
 | `message` | text | yes | Telegram HTML is supported — `<b>`, `<i>`, `<a href>` |
-| `time` | `HH:MM` (24h) | no | Picks which run it goes out on. Blank means both |
+| `time` | `HH:MM` (24h) | no | Currently ignored — every row goes out on both runs |
 
 A few representative rows — the first two from `moon_phases`, the third from `personal`:
 
@@ -81,7 +83,7 @@ A few representative rows — the first two from `moon_phases`, the third from `
 
 Rows missing `date` or `message` are skipped silently.
 
-`time` doesn't schedule an arbitrary moment — the bot only wakes up twice a day, so the column chooses **which of those two runs** a reminder rides along with. Anything you write is snapped to the nearest run: `06:00` or `09:00` go out in the morning, `17:00` or `21:00` in the evening. A time nobody can parse falls back to sending on every run rather than being dropped.
+`time` is read from the sheet and then ignored. It used to choose which of the two runs a reminder rode along with, snapping to the nearest one; now every row due on a date goes out on both. Filling the column in is harmless, and the routing is in the history if I ever want it back.
 
 ## Configuration
 
@@ -93,7 +95,7 @@ Set as GitHub Actions repository secrets:
 | `TELEGRAM_CHAT_IDS` | Comma-separated chat IDs to send to |
 | `SHEET_ID` | The ID from the Google Sheet URL (the sheet must be link-shared) |
 
-`SLOT_TIMES` (optional) overrides the run times the `time` column snaps to — comma-separated IST `HH:MM`, defaulting to `07:30,18:00`. Change it only alongside the cron.
+`MAX_DELAY_HOURS` (optional) drops a run that started more than that many hours behind its cron, instead of firing a reminder in the middle of the night. Defaults to `6`, which for the evening run lands exactly on midnight. Set it to `0` to send however late the run is.
 
 Set as variables on the Cloudflare Worker:
 
@@ -129,18 +131,21 @@ curl "https://api.telegram.org/bot<TOKEN>/setWebhook" \
 
 In rough order of likelihood:
 
-1. **Read the Actions run log.** Every reminder prints a line — sent, skipped and which run it belongs to, or `No reminder for <date>`. That single log distinguishes "the send failed" from "the row was never due", which are very different problems.
-2. **Check the workflow hasn't been disabled.** GitHub switches off scheduled workflows on public repos after 60 days without repository activity, with one email as warning. For a bot that runs on cron and nothing else, this is the most likely reason it goes quiet, and it looks exactly like a code bug from the outside.
-3. **Confirm the sheet is still link-shared.** Revoking sharing breaks the CSV fetch — you'll see three retry lines and then a `RuntimeError` in the log.
-4. **Check the date format.** `date` is matched as a plain string against `YYYY-MM-DD`. A cell reading `01/03/2026` matches nothing, and the row is skipped without complaint.
-5. **Check the chat IDs.** A wrong or stale ID fails for that recipient only, so one person can stop receiving while the other carries on.
+1. **Read the Actions run log.** Every run prints which cron it belongs to, which date it resolved to and how late it started, then a line per reminder sent or `No reminder for <date>`. That single log distinguishes "the send failed" from "the row was never due", which are very different problems.
+2. **Check whether the run was dropped as stale.** A run starting more than `MAX_DELAY_HOURS` behind its cron sends nothing and logs `Stale: 9.98h behind the 2026-08-28 run, dropping 2:` followed by each message it withheld. That's deliberate — the alternative is a reminder at 4am — but the log names what was lost, so it's never confused with `No reminder for <date>`, which means nothing was due in the first place.
+3. **Check the workflow hasn't been disabled.** GitHub switches off scheduled workflows on public repos after 60 days without repository activity, with one email as warning. For a bot that runs on cron and nothing else, this is the most likely reason it goes quiet, and it looks exactly like a code bug from the outside.
+4. **Confirm the sheet is still link-shared.** Revoking sharing breaks the CSV fetch — you'll see three retry lines and then a `RuntimeError` in the log.
+5. **Check the date format.** `date` is matched as a plain string against `YYYY-MM-DD`. A cell reading `01/03/2026` matches nothing, and the row is skipped without complaint.
+6. **Check the chat IDs.** A wrong or stale ID fails for that recipient only, so one person can stop receiving while the other carries on.
 
 ## Schedule
 
-| Cron (UTC) | IST |
-| --- | --- |
-| `0 2 * * *` | 07:30 |
-| `30 12 * * *` | 18:00 |
+| Cron (UTC) | IST | Usually delivers |
+| --- | --- | --- |
+| `13 1 * * *` | 06:43 | ~08:30 |
+| `30 12 * * *` | 18:00 | ~19:00 |
+
+Both are set earlier than the message is wanted, because Actions starts scheduled runs late — never early. Over 365 runs the morning cron used to sit at `0 2`, ran a median 178 minutes late, and never once landed before 08:00 IST; moving it off the top of the hour is worth about an hour. The evening slot has held up better and stays where it is.
 
 ## What it costs
 
@@ -163,8 +168,8 @@ Every "why not just use a database / a small VPS / a proper scheduler" answer in
 
 ## Known limitations
 
-- **Reminders can't be set to an arbitrary time.** By design — see above. `time` picks the morning or evening run, and a reminder written for `09:00` arrives at 07:30.
-- **`SLOT_TIMES` has to be kept in sync with the cron.** The run times live in `reminder.py` and in `.github/workflows/reminder.yml`, and nothing checks that they agree. Change one, change the other.
+- **Reminders can't be set to an arbitrary time.** By design — the bot wakes twice a day, and everything due on a date goes out on both runs.
+- **Delivery is approximate.** GitHub starts scheduled runs late, by a median of one to three hours over the last six months and occasionally by ten. The crons are set early to absorb some of that, but nothing makes Actions punctual. Cloudflare Cron Triggers would, at the cost of porting the send into the Worker.
 - **Reminders are date-exact.** There's no recurrence — an annual birthday needs a row per year.
 - **The moon calendar runs out.** It's curated by hand, so the sheet has to be topped up each year. Deliberate, but it does mean the bot goes quiet if I forget.
 - **The Worker can't hold a conversation**, and says so. Canned responses match on word boundaries, so a message hitting several triggers gets all of those replies joined together.

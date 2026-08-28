@@ -2,8 +2,14 @@ name: Daily Reminder
 
 on:
   schedule:
-    - cron: '0 2 * * *'    # 7:30 AM IST
-    - cron: '30 12 * * *'  # 6:00 PM IST
+    # Cron is UTC, and GitHub starts scheduled runs late -- never early.
+    # Measured over 365 runs the old '0 2' morning slot ran a median 178 min
+    # late and never once landed before 08:00 IST, so it moved earlier and off
+    # the top of the hour -- the busiest minute on the platform. The evening
+    # slot has held up better (median 109 min over 6 months, 55 min over the
+    # last fortnight) and stays where it was. Every entry goes out on both.
+    - cron: '13 1 * * *'   # 06:43 IST, usually delivers ~08:30
+    - cron: '30 12 * * *'  # 18:00 IST, usually delivers ~19:00
   workflow_dispatch:
 
 jobs:
@@ -25,4 +31,9 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_IDS: ${{ secrets.TELEGRAM_CHAT_IDS }}
           SHEET_ID: ${{ secrets.SHEET_ID }}
+          # Empty on workflow_dispatch, which falls back to the wall clock.
+          TRIGGER_CRON: ${{ github.event.schedule }}
+          # Drop a run this far behind schedule rather than firing it in the
+          # small hours. Costs ~1% of morning and ~5% of evening runs.
+          MAX_DELAY_HOURS: '6'
         run: python reminder.py
