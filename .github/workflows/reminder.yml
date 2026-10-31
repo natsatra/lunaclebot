@@ -8,8 +8,8 @@ on:
     # the top of the hour -- the busiest minute on the platform. The evening
     # slot has held up better (median 109 min over 6 months, 55 min over the
     # last fortnight) and stays where it was. Every entry goes out on both.
-    - cron: '13 1 * * *'   # 06:43 IST, usually delivers ~08:30
-    - cron: '30 12 * * *'  # 18:00 IST, usually delivers ~19:00
+    - cron: '13 1 * * *'   #06:43 IST, usually delivers ~08:30
+    - cron: '30 12 * * *'  #18:00 IST, usually delivers ~19:00
   workflow_dispatch:
 
 jobs:
