@@ -17,7 +17,6 @@ Lunacle sends a daily message about the current lunar phase, eclipses, and the o
 Message the bot as a stranger and Lunacle answers politely, then quietly forwards the conversation to me:
 
 > Hi there! 👋
->
 > I can't hold conversations just yet, but I love your enthusiasm! 🌙
 
 ## How it works
